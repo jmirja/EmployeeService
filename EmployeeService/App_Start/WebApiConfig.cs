@@ -2,6 +2,7 @@
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using WebApiContrib.Formatting.Jsonp;
 
 namespace EmployeeService
 {
@@ -33,9 +34,12 @@ namespace EmployeeService
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-          
-
+         
             config.Formatters.Add(new CustomJsonFormatter());
+
+            // for cross domain ajax call 
+            //var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+            //config.Formatters.Insert(0, jsonpFormatter);
 
             // this is always return json data when a reqest is made from browser but content-type: is misleading
             // config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
