@@ -8,19 +8,19 @@ namespace EmployeeService
 {
     public static class WebApiConfig
     {
-        public class CustomJsonFormatter : JsonMediaTypeFormatter
-        {
-            public CustomJsonFormatter()
-            {
-                this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
-            }
+        //public class CustomJsonFormatter : JsonMediaTypeFormatter
+        //{
+        //    public CustomJsonFormatter()
+        //    {
+        //        this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+        //    }
 
-            public override void SetDefaultContentHeaders(Type type, HttpContentHeaders headers, MediaTypeHeaderValue mediaType)
-            {
-                base.SetDefaultContentHeaders(type, headers, mediaType);
-                headers.ContentType = new MediaTypeHeaderValue("application/json");
-            }
-        }
+        //    public override void SetDefaultContentHeaders(Type type, HttpContentHeaders headers, MediaTypeHeaderValue mediaType)
+        //    {
+        //        base.SetDefaultContentHeaders(type, headers, mediaType);
+        //        headers.ContentType = new MediaTypeHeaderValue("application/json");
+        //    }
+        //}
 
         public static void Register(HttpConfiguration config)
         {
@@ -34,12 +34,11 @@ namespace EmployeeService
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-         
-            config.Formatters.Add(new CustomJsonFormatter());
 
-            // for cross domain ajax call 
-            //var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
-            //config.Formatters.Insert(0, jsonpFormatter);
+            // config.Formatters.Add(new CustomJsonFormatter());
+
+            // for cross domain ajax call
+            config.EnableCors();
 
             // this is always return json data when a reqest is made from browser but content-type: is misleading
             // config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));

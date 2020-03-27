@@ -13,7 +13,7 @@
                 $.ajax({
                     type: 'GET',
                     url: "api/employees/",
-                    dataType: 'json',
+                    dataType: 'jsonp',
                     success: function (data) {
                         ulEmployees.empty();
                         $.each(data, function (index, val) {
@@ -32,7 +32,7 @@
     </script>
 </head>
 <body>
-    <p>Call ASP NET Web API from jQuery ajax</p>
+    <p>Call ASP NET Web API from jQuery ajax using same origin policy</p>
     <div>
         <input id="btn" type="button" value="Get All Employees" />
         <input id="btnClear" type="button" value="Clear" />
