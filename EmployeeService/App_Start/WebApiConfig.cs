@@ -34,6 +34,8 @@ namespace EmployeeService
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+           
+           // config.Filters.Add(new RequireHttpsAttribute());
 
             // config.Formatters.Add(new CustomJsonFormatter());
 
