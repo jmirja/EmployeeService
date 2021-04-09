@@ -13,7 +13,7 @@ namespace EmployeeService
     {
         public override void OnAuthorization(HttpActionContext actionContext)
         {
-            if (actionContext.Request.Headers.Authorization == null) // client didn't sent credentials
+            if (actionContext.Request.Headers.Authorization == null) // if client didn't sent credentials
             {
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
             }
